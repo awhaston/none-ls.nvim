@@ -833,7 +833,7 @@ local sources = { null_ls.builtins.diagnostics.golangci_lint }
 - Filetypes: `{ "go" }`
 - Method: `diagnostics_on_save`
 - Command: `golangci-lint`
-- Args: `{ "run", "--fix=false", "--out-format=json" }`
+- Args: dynamically resolved (see [source](https://github.com/nvimtools/none-ls.nvim/blob/main/lua/null-ls/builtins/diagnostics/golangci_lint.lua))
 
 ### [hadolint](https://github.com/hadolint/hadolint)
 
@@ -1043,6 +1043,25 @@ local sources = { null_ls.builtins.diagnostics.opacheck }
 - Method: `diagnostics_on_save`
 - Command: `opa`
 - Args: `{ "check", "-f", "json", "--strict", "$ROOT", "--ignore=*.yaml", "--ignore=*.yml", "--ignore=*.json", "--ignore=.git/**/*" }`
+
+### [opentofu_validate](https://opentofu.org/docs/cli/commands/validate)
+
+OpenTofu `validate` is a subcommand of OpenTofu to validate configuration files in a directory,
+            referring only to the configuration and not accessing any remote services such as remote state,
+            provider APIs, etc.
+
+#### Usage
+
+```lua
+local sources = { null_ls.builtins.diagnostics.opentofu_validate }
+```
+
+#### Defaults
+
+- Filetypes: `{ "terraform", "tf", "terraform-vars" }`
+- Method: `diagnostics_on_save`
+- Command: `tofu`
+- Args: `{ "validate", "-json" }`
 
 ### [perlimports](https://metacpan.org/dist/App-perlimports/view/script/perlimports)
 
@@ -2300,8 +2319,8 @@ local sources = { null_ls.builtins.formatting.csharpier }
 
 - Filetypes: `{ "cs" }`
 - Method: `formatting`
-- Command: `dotnet-csharpier`
-- Args: `{ "--write-stdout" }`
+- Command: `csharpier`
+- Args: `{ "format", "--write-stdout" }`
 
 ### [cueimports](https://pkg.go.dev/github.com/asdine/cueimports)
 
@@ -3209,9 +3228,10 @@ local sources = { null_ls.builtins.formatting.ocdc }
 - Command: `ocdc`
 - Args: `{ "--path", "-" }`
 
-### [opentofu_fmt](https://opentofu.org/docs/cli/commands/fmt/#usage)
+### [opentofu_fmt](https://opentofu.org/docs/cli/commands/fmt)
 
-The opentofu-fmt command rewrites `opentofu` configuration files to a canonical format and style.
+The OpenTofu `fmt` command rewrites OpenTofu configuration files to a canonical
+            format and style.
 
 #### Usage
 
