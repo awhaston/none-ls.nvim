@@ -118,7 +118,7 @@ return {
     formatting = { "djhtml", "djlint" }
   },
   dockerfile = {
-    diagnostics = { "hadolint" }
+    diagnostics = { "hadolint", "trivy" }
   },
   dosbatch = {
     hover = { "printenv" }
@@ -207,6 +207,9 @@ return {
     diagnostics = { "terragrunt_validate" },
     formatting = { "atlas_fmt", "hclfmt", "packer", "terragrunt_fmt" }
   },
+  helm = {
+    diagnostics = { "kube_linter", "trivy" }
+  },
   html = {
     diagnostics = { "markuplint", "tidy" },
     formatting = { "prettier", "prettierd", "rustywind", "tidy" }
@@ -280,6 +283,9 @@ return {
   },
   matlab = {
     diagnostics = { "mlint" }
+  },
+  meson = {
+    formatting = { "meson_format" }
   },
   ncl = {
     formatting = { "topiary" }
@@ -494,7 +500,7 @@ return {
     formatting = { "tidy", "xmllint" }
   },
   yaml = {
-    diagnostics = { "actionlint", "cfn_lint", "spectral", "vacuum", "yamllint" },
+    diagnostics = { "actionlint", "cfn_lint", "kube_linter", "spectral", "vacuum", "yamllint" },
     formatting = { "prettier", "prettierd", "yamlfix", "yamlfmt" }
   },
   ["yaml.ansible"] = {

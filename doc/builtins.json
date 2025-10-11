@@ -232,6 +232,12 @@
         "kotlin"
       ]
     },
+    "kube_linter": {
+      "filetypes": [
+        "helm",
+        "yaml"
+      ]
+    },
     "ltrs": {
       "filetypes": [
         "text",
@@ -499,7 +505,9 @@
       "filetypes": [
         "terraform",
         "tf",
-        "terraform-vars"
+        "terraform-vars",
+        "helm",
+        "dockerfile"
       ]
     },
     "twigcs": {
@@ -900,6 +908,11 @@
     "mdformat": {
       "filetypes": [
         "markdown"
+      ]
+    },
+    "meson_format": {
+      "filetypes": [
+        "meson"
       ]
     },
     "mix": {

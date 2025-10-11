@@ -417,7 +417,7 @@ local sources = { null_ls.builtins.diagnostics.cfn_lint }
 - Filetypes: `{ "yaml", "json" }`
 - Method: `diagnostics`
 - Command: `cfn-lint`
-- Args: `{ "--format", "parseable", "-" }`
+- Args: `{ "--format", "parseable" }`
 
 #### Notes
 
@@ -886,6 +886,23 @@ local sources = { null_ls.builtins.diagnostics.ktlint }
 - Command: `ktlint`
 - Args: `{ "--relative", "--reporter=json", "--log-level=none", "**/*.kt", "**/*.kts" }`
 
+### [kube_linter](https://github.com/stackrox/kube-linter)
+
+KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure the applications represented in them adhere to best practices.
+
+#### Usage
+
+```lua
+local sources = { null_ls.builtins.diagnostics.kube_linter }
+```
+
+#### Defaults
+
+- Filetypes: `{ "helm", "yaml" }`
+- Method: `diagnostics`
+- Command: `kube-linter`
+- Args: `{ "lint", "--format", "json", "$ROOT" }`
+
 ### [ltrs](https://github.com/jeertmans/languagetool-rust)
 
 LanguageTool-Rust (LTRS) is both an executable and a Rust library that aims to provide correct and safe bindings for the LanguageTool API.
@@ -935,6 +952,7 @@ local sources = { null_ls.builtins.diagnostics.markdownlint_cli2 }
 - Filetypes: `{ "markdown" }`
 - Method: `diagnostics_on_save`
 - Command: `markdownlint-cli2`
+- Args: `{ "$FILENAME" }`
 
 #### Notes
 
@@ -1779,7 +1797,7 @@ local sources = { null_ls.builtins.diagnostics.trivy }
 
 #### Defaults
 
-- Filetypes: `{ "terraform", "tf", "terraform-vars" }`
+- Filetypes: `{ "terraform", "tf", "terraform-vars", "helm", "dockerfile" }`
 - Method: `diagnostics_on_save`
 - Command: `trivy`
 - Args: dynamically resolved (see [source](https://github.com/nvimtools/none-ls.nvim/blob/main/lua/null-ls/builtins/diagnostics/trivy.lua))
@@ -2008,6 +2026,7 @@ local sources = { null_ls.builtins.formatting.bean_format }
 - Filetypes: `{ "beancount" }`
 - Method: `formatting`
 - Command: `bean-format`
+- Args: `{ "-" }`
 
 #### Notes
 
@@ -3077,6 +3096,23 @@ local sources = { null_ls.builtins.formatting.mdformat }
 #### Notes
 
 - Mdformat offers an extensible plugin system for both code fence content formatting and Markdown parser extensions (like GFM tables). A comprehensive list of plugins is documented [here](https://mdformat.readthedocs.io/en/stable/users/plugins.html)
+
+### [meson_format](https://mesonbuild.com/Commands.html#format)
+
+Meson's builtin formatter
+
+#### Usage
+
+```lua
+local sources = { null_ls.builtins.formatting.meson_format }
+```
+
+#### Defaults
+
+- Filetypes: `{ "meson" }`
+- Method: `formatting`
+- Command: `meson`
+- Args: `{ "format", "--", "-" }`
 
 ### [mix](https://hexdocs.pm/mix/1.12/Mix.html)
 

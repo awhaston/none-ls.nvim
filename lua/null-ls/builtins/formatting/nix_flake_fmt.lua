@@ -107,6 +107,9 @@ local legacy_find_nix_fmt = function(root)
             return
         end
         local flake_ref = get_flake_ref(_root)
+        if flake_ref == nil then
+            return
+        end
         local eval_nix_formatter = [[
           let
             system = "]] .. nix_current_system .. [[";
@@ -255,6 +258,15 @@ end
 --- By doing this ourselves, we can cache the result.
 local find_nix_fmt = function(opts, done)
     done = vim.schedule_wrap(done)
+
+    -- A malicious project could make `nix fmt` do anything to your computer,
+    -- so we ask the user if the project is trusted before we do that.
+    local is_project_trusted = vim.secure.read(opts.root)
+    if not is_project_trusted then
+        log:warn(string.format("nix_flake_fmt disabled because project is not trusted: %s", opts.root))
+        done(nil)
+        return
+    end
 
     local async = require("plenary.async")
 

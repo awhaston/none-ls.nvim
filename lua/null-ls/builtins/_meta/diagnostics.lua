@@ -97,6 +97,9 @@ return {
   ktlint = {
     filetypes = { "kotlin" }
   },
+  kube_linter = {
+    filetypes = { "helm", "yaml" }
+  },
   ltrs = {
     filetypes = { "text", "markdown", "markdown" }
   },
@@ -242,7 +245,7 @@ return {
     filetypes = {}
   },
   trivy = {
-    filetypes = { "terraform", "tf", "terraform-vars" }
+    filetypes = { "terraform", "tf", "terraform-vars", "helm", "dockerfile" }
   },
   twigcs = {
     filetypes = { "twig" }
